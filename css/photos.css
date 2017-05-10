@@ -1,0 +1,46 @@
+.photos {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 10px;
+}
+.photos:last-child {
+    margin-bottom: 0;
+}
+.row {
+    padding: 10px;
+    width: 12%;
+}
+
+.image {
+    height: 250px;
+    width: 100%;
+    margin: 0 10px;
+    border-radius: 20px;
+
+}
+
+.btn-download
+{
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+    position: relative;
+    padding: 10px 40px;
+    margin: 0px 10px 10px 0px;
+    float: left;
+    border-radius: 10px;
+    font-family: 'Pacifico', cursive;
+    font-size: 25px;
+    color: #FFF;
+    text-decoration: none;
+    background-color: #3498DB;
+    border-bottom: 5px solid #2980B9;
+    text-shadow: 0px -2px #2980B9;
+    cursor: pointer;
+}
+
+.btn-download:active
+{
+    transform: translate(0px,5px);
+    -webkit-transform: translate(0px,5px);
+    border-bottom: 1px solid;
+}
