@@ -1,5 +1,7 @@
 <?php
 
+#https://vk.com/album12613550_169632134
+
 function getJSONData($filePath)
 {
     $string = file_get_contents($filePath); // get templates of resources from file
@@ -20,26 +22,6 @@ function isValidLink($link)
         }
     }
     return array($isValid, $key);
-}
-
-function getContent()
-{
-    $ch = curl_init();
-
-    curl_setopt($ch, CURLOPT_URL, "");
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 180);
-    curl_setopt($ch, CURLOPT_AUTOREFERER, 0);
-    curl_setopt($ch, CURLOPT_HEADER, 1);
-    //verify https
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-
-    $result = curl_exec($ch);
-
-    var_dump($result);
-    curl_close($ch);
 }
 
 function referToHandler($name)

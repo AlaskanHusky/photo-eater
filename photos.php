@@ -66,7 +66,7 @@ if (isset($_POST['download'])) {
     <div class="logo">Photo Eater</div>
 </a>
 <div class="photos">
-    <div class="row">
+    <div class="row-btn">
         <form action="photos.php" method="post">
             <input type="submit" class="btn-download" name="download" value="Download all">
         </form>
@@ -74,37 +74,24 @@ if (isset($_POST['download'])) {
     <?php
     createElements($_SESSION['filenames']);
     ?>
-    <div class="load">
-        <input type="submit" class="btn-download" value="Load more">
-        <img src="loading.gif" id="imgLoad">
-    </div>
     <script type="text/javascript">
-        $(document).ready(function () {
-            $("#imgLoad").hide();  //Скрываем прелоадер
-        });
-        var num = 14; //чтобы знать с какой записи вытаскивать данные
-        $(function () {
-            $(".load div").click(function () { //Выполняем если по кнопке кликнули
-                $("#imgLoad").show(); //Показываем прелоадер
-
-                $.ajax({
-                    url: "ajax.php",
-                    type: "GET",
-                    data: {"num": num},
-                    cache: false,
-                    success: function (response) {
-                        if (response == 0) {  // смотрим ответ от сервера и выполняем соответствующее действие
-                            alert("Больше нет записей");
-                            $("#imgLoad").hide();
-                        } else {
-                            $("#content").append(response);
-                            num = num + 14;
-                            $("#imgLoad").hide();
-                        }
+        var num = 13; //чтобы знать с какой записи вытаскивать данные
+        for (var i = num; i < <?php echo (count($_SESSION['filenames']) - 1);?>; i++) {
+            num++;
+            $.ajax({
+                url: "ajax.php",
+                type: "GET",
+                data: {"num": num},
+                cache: false,
+                success: function (response) {
+                    if (response == 0) {  // смотрим ответ от сервера и выполняем соответствующее действие
+                       num++;
+                    } else {
+                        $(".photos").append(response);
                     }
-                });
+                }
             });
-        });
+        }
     </script>
 
 </div>
